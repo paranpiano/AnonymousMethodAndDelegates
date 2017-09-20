@@ -7,7 +7,24 @@ namespace AnonymousMethodAndDelegates
     {
         delegate int PointtoAddFunction(int num1, int num2);
 
+       
         static void Main(string[] args)
+        {
+            //1. Degate  , Callback for data commucation
+            MyClass obj = new MyClass();
+            obj.Longrunning(Callback);
+
+            //2. Running Delegate and Anonymout method performance Test
+            //AnonymousUsage();
+        }
+
+        static void Callback(int i)
+        {
+            Console.WriteLine("Callback function called");
+            Console.WriteLine(i);
+        }
+
+        private static void AnonymousUsage()
         {
             Stopwatch objwatch = new Stopwatch();
 
@@ -68,14 +85,11 @@ namespace AnonymousMethodAndDelegates
                 objwatch.Stop();
                 Console.WriteLine(objwatch.ElapsedTicks.ToString());
             }
-
         }
-
         static int Add(int num1, int num2)
         {
             return num1 + num2;
         }
-
         //Nomal Add run!
         //299
         //20
